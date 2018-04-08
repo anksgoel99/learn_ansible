@@ -1,0 +1,11 @@
+---
+- hosts: servers
+  tasks:
+   - name: Run a remote python script
+     shell: python /home/agoel/test/ifconfig.py
+     become: true
+     register: out
+   - debug: msg={{item.stdout_lines}}
+     with_items:
+      - "{{ out }}"
+  remote_user: agoel
