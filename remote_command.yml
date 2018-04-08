@@ -1,0 +1,11 @@
+---
+- hosts: servers
+  tasks:
+   - name: Listing
+     shell: ls -l
+     register: output
+   - debug: msg={{output.stdout_lines}}
+     with_items:
+        - "{{output}}"
+  remote_user: agoel
+ 

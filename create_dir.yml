@@ -1,0 +1,15 @@
+---
+- hosts: servers
+  vars:
+  - dir: test
+  tasks:
+   - name: Create directory
+     file: 
+      path: /home/agoel/{{ dir }}/test1/tst.txt
+      state: directory
+     become: true
+   - name: print variable's output
+     debug:
+      msg: "{{ dir }}"
+  remote_user: agoel
+  

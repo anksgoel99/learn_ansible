@@ -1,0 +1,33 @@
+---
+- hosts: servers
+  vars:
+  - data: Test_Docker
+  tasks:
+   - name: Copying a file from one directory to another
+     shell: cp /home/agoel/mva_validation.pl /tmp/
+     become: true
+     become_user: root
+     register: output
+   - debug: msg={{output.stdout_lines}}
+     with_items:
+      - "{{ output }}"
+   - name: Copying a file from one directory to other with variable in path
+     command: cp /home/agoel/{{data}}/manifest.json /home/agoel/test
+     become: yes
+   - name: Copying file from one directory to another with differen unknown variables in path
+     command: cp /home/agoel/{{item}}/manifest.json /home/agoel/test
+     with_items:
+      - abcd
+      - xyz
+     become: yes
+   - name: create directory
+   - debug: msg=Creating directory
+     file: path = ~/test/test1
+     state=directory
+   - name: copy file from one directory to another using copy module
+     copy:
+      src: ~/mva_validation.pl 
+      des: ~/test/test1
+      
+  remote_user: agoel
+ 

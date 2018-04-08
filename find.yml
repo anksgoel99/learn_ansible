@@ -1,0 +1,13 @@
+---
+- hosts: servers
+  tasks:
+   - name: Find a file
+     shell: find / -name "mva_validation.pl"
+     become: true
+     become_user: root
+     register: output
+   - debug: msg={{output.stdout_lines}}
+     with_items:
+      - "{{ output }}"
+  remote_user: agoel
+ 

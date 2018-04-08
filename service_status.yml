@@ -1,0 +1,10 @@
+---
+- hosts: servers
+  tasks:
+  - name: Start NGiNX
+    service:
+      name: nginx
+      state: started
+
+  remote_user: agoel
+ 
