@@ -6,4 +6,5 @@
       src: /home/agoel/test/test1/tst.txt
       dest: /tmp
       become: true
+      become_user: root
   remote_user: agoel
