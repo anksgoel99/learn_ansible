@@ -1,0 +1,9 @@
+---
+- hosts: servers
+  tasks:
+   - name : copying files
+     copy:
+      src: /home/agoel/test/test1/tst.txt
+      dest: /tmp
+      become: yes
+  remote_user: agoel
