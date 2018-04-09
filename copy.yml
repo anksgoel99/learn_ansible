@@ -5,5 +5,5 @@
      copy:
       src: /home/agoel/test/test1/tst.txt
       dest: /tmp
-      become: yes
+      become: true
   remote_user: agoel
