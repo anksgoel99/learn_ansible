@@ -2,9 +2,7 @@
 - hosts: servers
   tasks:
    - name : copying files
-     copy:
-      src: /home/agoel/test/test1/tst.txt
-      dest: /tmp
-      become: true
-      become_user: root
+     become: true
+     become_user: root
+     copy: src=/home/ankit/test.yml dest=/tmp
   remote_user: agoel
